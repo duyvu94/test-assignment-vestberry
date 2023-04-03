@@ -1,4 +1,4 @@
-import { BookHistory, Book } from '../models';
+import { Book, BookHistory } from '../models';
 
 interface CreateBookHistoryInput {
   bookId: number;
@@ -16,9 +16,14 @@ class BookHistoryService {
     return BookHistory.create({ ...input, version });
   }
 
-  async getBookHistory(bookId: number, userId: number, limit: number, offset: number): Promise<BookHistory[] | null> {
+  async getBookHistory(
+    bookId: number,
+    userId: number,
+    limit: number,
+    offset: number,
+  ): Promise<BookHistory[] | null> {
     const book = await Book.findOne({
-      where: {id: bookId, userId }
+      where: { id: bookId, userId },
     });
 
     if (!book) return null;

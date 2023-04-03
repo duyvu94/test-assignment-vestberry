@@ -1,6 +1,6 @@
 import BookHistoryService from '../../src/services/bookHistoryService';
 import { Book, BookHistory, User } from '../../src/models';
-import { mocked, MockedObject } from 'jest-mock';
+import { MockedObject, mocked } from 'jest-mock';
 import { Sequelize } from 'sequelize-typescript';
 
 const mockedBookHistory = mocked(BookHistory);
@@ -36,7 +36,7 @@ describe('BookHistoryService', () => {
     });
     book = Book.build({
       ...bookHistoryInput,
-      userId: 1
+      userId: 1,
     });
     bookHistory = BookHistory.build({
       ...bookHistoryInput,

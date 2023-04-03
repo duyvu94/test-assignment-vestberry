@@ -57,16 +57,12 @@ const bookResolver = {
       return books;
     },
 
-    async getLatestBookVersion(
-      _: RootValue,
-      { id }: any,
-      context: Context,
-    ): Promise<BookHistory> {
+    async getLatestBookVersion(_: RootValue, { id }: any, context: Context): Promise<BookHistory> {
       if (!context.isAuth) {
         throw new GraphQLError('User is not authenticated');
       }
       const bookHistory = await bookHistoryService.getLatestBookVersion(id);
-      if (!bookHistory){
+      if (!bookHistory) {
         throw new GraphQLError('The book do not exist or you may not be the owner!');
       }
 
@@ -81,7 +77,12 @@ const bookResolver = {
       if (!context.isAuth) {
         throw new GraphQLError('User is not authenticated');
       }
-      const bookHistories = await bookHistoryService.getBookHistory(id, context.user.id, limit, offset);
+      const bookHistories = await bookHistoryService.getBookHistory(
+        id,
+        context.user.id,
+        limit,
+        offset,
+      );
       if (!bookHistories) {
         throw new GraphQLError('The book do not exist or your are not the owner!');
       }
