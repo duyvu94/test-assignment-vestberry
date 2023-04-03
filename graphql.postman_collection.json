@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "e39e9845-f6df-45dd-a654-487370117826",
+		"name": "Graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16192759"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "add a book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    createBook (\r\n        title: \"HP 5\",\r\n        author: \"RV\",\r\n        description: \"DS\"\r\n        yearOfPublication: 1994\r\n        rating: 8.5\r\n        genres: \"Comedy, Scifi\"\r\n    ) {\r\n        id\r\n        title\r\n        author\r\n        description\r\n        yearOfPublication\r\n        rating\r\n        genres\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    deleteBook (\r\n        id: 2\r\n    ) \r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    updateBook (\r\n        id: 4,\r\n        title: \"HP 9\",\r\n        author: \"RV4\",\r\n        description: \"DS5\"\r\n        yearOfPublication: 1995\r\n        rating: 8.6\r\n        genres: \"Comedy, Scifi1\"\r\n    ) {\r\n        id\r\n        title\r\n        author\r\n        description\r\n        yearOfPublication\r\n        rating\r\n        genres\r\n        createdAt\r\n        updatedAt\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query a book history",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    getBookHistory (\r\n        id: 4,\r\n        limit: 5,\r\n        offset: 0\r\n    ) {\r\n       id\r\n        title\r\n        author\r\n        description\r\n        yearOfPublication\r\n        rating\r\n        genres\r\n        version\r\n        createdAt\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query a book latest version",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    getLatestBookVersion (\r\n        id: 4\r\n    ) {\r\n        id\r\n        title\r\n        author\r\n        description\r\n        yearOfPublication\r\n        rating\r\n        genres\r\n        createdAt\r\n        version\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "revert to version",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    revertToVersion (\r\n        id: 4,\r\n        version: 1\r\n    ) {\r\n        id\r\n        title\r\n        author\r\n        description\r\n        yearOfPublication\r\n        rating\r\n        genres\r\n        createdAt\r\n        updatedAt\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NoAuth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    register (\r\n        email: \"my_email\",\r\n        password: \"my_password\"\r\n    ){\r\n        token\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n    login (\r\n        email: \"my_email\",\r\n        password: \"my_password\"\r\n    ){\r\n        token\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query books",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    findBooks (\r\n        keyword: \"RV\",\r\n        limit: 10,\r\n        offset: 0\r\n    ){\r\n        id\r\n        title\r\n        author\r\n        description\r\n        yearOfPublication\r\n        rating\r\n        genres\r\n        createdAt\r\n        updatedAt\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/graphql",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
