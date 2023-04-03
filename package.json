@@ -5,7 +5,6 @@
   "version": "1.0.0",
   "description": "A simple GraphQL backend application",
   "main": "dist/index.js",
-  "types": "dist/index.js.map",
   "scripts": {
     "start": "yarn build && nodemon dist/index.js",
     "db:start": "docker-compose -f ./environment/docker-compose.yml --env-file .env up -d",
